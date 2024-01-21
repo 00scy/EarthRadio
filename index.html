@@ -45,6 +45,190 @@
   </div>
   </section>
 
-  <script src="radio.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Viga&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+body {
+  background: #3e3f40;
+  margin: 0;
+}
+
+header {
+  padding: 7px;
+  background:rgba(34, 34, 40, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header img {
+  margin-left:13px;
+  display: block;
+  width: 2.5rem;
+  aspect-ratio:1;
+}
+
+#navbar a {
+  font-size: 0.9em;
+  font-family: "Viga", sans-serif;
+  font-weight:400;
+  color:#d5d7d9;
+  text-decoration: none;
+  padding:8px 12px;
+  border-radius: 1rem;
+}
+#navbar a:hover {
+  background-color: rgb(115, 116, 117, .8);
+}
+
+#loginbtn {
+  font-size: 0.95em;
+  font-family: "Viga", sans-serif;
+  font-weight: 400;
+  color: #edeff2;
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-radius: 1rem;
+  padding: 8px 20px;
+}
+#loginbtn:hover {
+  background-color: rgb(115, 116, 117, .8);
+}
+
+#Music {
+  color: #f9feff;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  margin-inline:auto;
+  margin-top: -5rem;
+  padding-top: 5rem;
+  display: flex;
+  z-index: -1;
+  position: relative;
+  background: url(/radio/assets/1.jpg);
+}
+
+#BackgroundBlur {
+  position: absolute;
+  inset:0;
+  backdrop-filter:blur(15px);
+  z-index:-1;
+}
+
+#Album {
+  margin: 3rem 3rem;
+  height: 15rem;
+  aspect-ratio:1;
+  border-radius: 25%;
+  z-index: 10;
+}
+
+#SongText {
+  padding: 5rem 2rem;
+}
+#SongName {
+  font-weight: 700;
+  font-size: 3.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: -1.5rem;
+}
+#SongArtist {
+  font-weight: 550;
+  font-size: 1.5rem;
+  padding-block:20px;
+}
+
+#Presenter {
+  margin-top: 3rem;
+  display: flex;
+  align-items:center;
+  gap:10px;
+}
+#PresAvatar {
+  margin-left: 10rem;
+  height: 7.5rem;
+  aspect-ratio:1;
+  border-radius: 50%;
+}
+#PresName {
+  font-weight: 600;
+  font-size: 1.75rem;
+  align-items:normal
+}
+#PresRole {
+  font-weight: 500;
+  font-size: 1.5rem;
+  align-items:normal
+}
+
+  </style>
+  
+  <script>
+    const cover = document.getElementById('Album'),
+    title = document.getElementById('SongName'),
+    artist = document.getElementById('SongArtist'),
+    banner =  document.getElementById(`Music`),
+    presname = document.getElementById('PresName'),
+    presavatar = document.getElementById('PresAvatar');
+
+const music = new Audio();
+
+const songs = [
+    {
+        path: '/radio/assets/3.mp3',
+        cover: '/EarthRadiov2/assets/1.jpg',
+        name: 'Intellect',
+        artist: 'Yung Logos',
+    },
+    {
+        path: '/EarthRadiov2/assets/2.mp3',
+        cover: '/EarthRadiov2/assets/2.jpg',
+        name: 'You Will Never See Me',
+        artist: 'NEFFEX',
+    },
+    {
+        path: '/radio/assets/3.mp3',
+        cover: '/EarthRadiov2/assets/3.jpg',
+        name: 'The Charmers Call',
+        artist: 'Hanu Dixit',
+    },
+]
+const presenters = [
+    {
+        name: 'Oscy',
+        username: '0scy.',
+        avatar: '/EarthRadiov2/assets/1.jpg',
+        role: 'Admin',
+    },
+]
+
+function loadMusic(songs){
+    music.src = songs[2].path;
+    title.textContent = songs[2].name;
+    artist.textContent = songs[2].artist;
+    let img = songs[2].cover;
+    cover.src = img;
+    banner.style.backgroundImage = `url(${img})`;
+}
+function loadPresenter(presenters){
+    presname.textContent = presenters.name;
+    presavatar.textContent = presenters.avatar;
+}
+
+loadMusic(songs);
+loadPresenter(presenters);
+  </script>
 </body>
 </html>
